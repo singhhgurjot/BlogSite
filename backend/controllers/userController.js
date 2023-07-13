@@ -99,8 +99,45 @@ class UserController {
   static changePassword = (req, res) => {
     const oldPassword = req.body.oldPassword;
     const newPassword = req.body.newPassword;
-    return res.send(req.user);
-    console.log(res.user);
+    if (!oldPassword || !newPassword) {
+      return res
+        .status(200)
+        .json({ message: "Please fill all the fields", success: false });
+    }
+    const salt = bcrypt.genSaltSync(10);
+    const hashedNewPassword = bcrypt.hashSync(newPassword, salt);
+    const currentUser = req.user;
+    userModel.findOne({ _id: currentUser._id }).then((data, err) => {
+      if (err) {
+        return res
+          .status(500)
+          .json({ message: "Internal Server Error", success: false });
+      }
+      if (data) {
+        if (bcrypt.compareSync(oldPassword, data.password)) {
+          userModel
+            .findOneAndUpdate(
+              { _id: currentUser._id },
+              { $set: { password: hashedNewPassword } }
+            )
+            .then((data, err) => {
+              if (err) {
+                return res
+                  .status(500)
+                  .json({ message: "Internal Server Error", success: false });
+              }
+              return res.status(200).json({
+                message: "Password Updated Succesfully",
+                success: true,
+              });
+            });
+        } else {
+          return res
+            .status(401)
+            .json({ message: " Old Password Doesnt Match" });
+        }
+      }
+    });
   };
 }
 module.exports = UserController;
