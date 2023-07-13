@@ -55,5 +55,52 @@ class UserController {
       res.send({ errors: result });
     }
   };
+  static userLogin = (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    if (!username || !password) {
+      return res
+        .status(400)
+        .json({ message: "Please fill all the fields", success: false });
+    }
+    userModel.findOne({ username }).then((data, err) => {
+      if (err) {
+        return res
+          .status(500)
+          .json({ message: "Internal Server Error", success: false });
+      }
+      if (data) {
+        const isMatch = bcrypt.compareSync(password, data.password);
+        if (isMatch) {
+          const token = jwt.sign(
+            { userID: data._id },
+            process.env.JWT_SECRET_KEY,
+            { expiresIn: 70 }
+          );
+          return res.status(200).json({
+            message: "Login Successfull",
+            success: true,
+            token: token,
+          });
+        } else {
+          return res.status(401).json({
+            message: "Please Check your Username or Password",
+            success: false,
+          });
+        }
+      } else {
+        return res.status(401).json({
+          message: "Please Check your Username or Password",
+          success: false,
+        });
+      }
+    });
+  };
+  static changePassword = (req, res) => {
+    const oldPassword = req.body.oldPassword;
+    const newPassword = req.body.newPassword;
+    return res.send(req.user);
+    console.log(res.user);
+  };
 }
 module.exports = UserController;
