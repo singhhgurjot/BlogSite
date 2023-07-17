@@ -1,0 +1,8 @@
+.outerDiv{
+    background-image: url("./background.svg");
+    background-size: cover;
+        /* Adjust as desired */
+        background-position: center;
+        /* Adjust as desired */
+
+}   

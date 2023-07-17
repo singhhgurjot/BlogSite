@@ -6,13 +6,13 @@ const { validationResult } = require("express-validator");
 class UserController {
   static userRegisteration = (req, res) => {
     const result = validationResult(req);
+    const { name, username, password, password_confirmation, tc } = req.body;
+    if (!name || !username || !password || !password_confirmation || !tc) {
+      return res
+        .status(400)
+        .json({ message: "Please fill all the fields", success: false });
+    }
     if (result.errors.length == 0) {
-      const { name, username, password, password_confirmation, tc } = req.body;
-      if (!name || !username || !password || !password_confirmation || !tc) {
-        return res
-          .status(400)
-          .json({ message: "Please fill all the fields", success: false });
-      }
       if (password != password_confirmation) {
         return res.status(422).json({
           message: "Password and confirm password do not match",
@@ -52,7 +52,18 @@ class UserController {
         }
       });
     } else {
-      res.send({ errors: result });
+      if (result.errors[0].path == "username") {
+        return res.json({
+          message: "The username should be of 3 letters atleast",
+          success: false,
+        });
+      }
+      if (result.errors[0].path == "password") {
+        return res.json({
+          message: "The password should be of 5 letters atleast",
+          success: false,
+        });
+      }
     }
   };
   static userLogin = (req, res) => {

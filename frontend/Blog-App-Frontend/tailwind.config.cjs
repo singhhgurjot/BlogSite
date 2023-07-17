@@ -2,7 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,html}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        calli: ["Edu TAS Beginner", "cursive"],
+      },
+    },
     colors: {
       "background-reg": "#4e4c4f",
       "reg-font": "#232220  ",

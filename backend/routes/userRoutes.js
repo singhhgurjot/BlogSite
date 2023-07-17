@@ -4,8 +4,10 @@ const router = express.Router();
 const { body } = require("express-validator");
 const { validationResult } = require("express-validator");
 const checkAuthUser = require("../middlewares/checkAuthUser.js");
+const Dashboard = require("../controllers/dashboardController.js");
 //MIDDLEWARES
 router.use("/changePassword", checkAuthUser);
+router.use("/dashboard", checkAuthUser);
 //Public Routes
 router.post(
   "/register",
@@ -17,4 +19,5 @@ router.post(
 router.post("/login", UserController.userLogin);
 //PROTECTED ROUTES
 router.post("/changePassword", UserController.changePassword);
+router.get("/dashboard", Dashboard.getUserInfo);
 module.exports = router;
