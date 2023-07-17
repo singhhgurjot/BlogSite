@@ -5,11 +5,11 @@ export default function navbar() {
   return (
     <>
   
-      <nav className="bg-transparent border-gray-200 dark:bg-gray-900 ">
+      <nav className="bg-transparent border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
 
-          <span className="font-calli font-bold text-2xl ">
+          <span className="font-calli font-bold text-4xl ">
             ScribbleSphere
           </span>
 
@@ -43,7 +43,7 @@ export default function navbar() {
               <li>
                 <a
                   href="#"
-                  className="font-calli font-bold text-1xl ml-px"
+                  className="font-calli font-bold text-2xl ml-px"
                   onClick={() => {
                     navigate("/login");
                   }}
@@ -55,7 +55,7 @@ export default function navbar() {
               <li>
                 <a
                   href="#"
-                  className="font-calli font-bold text-1xl"
+                  className="font-calli font-bold text-2xl"
                   onClick={() => {
                     navigate("/register");
                   }}

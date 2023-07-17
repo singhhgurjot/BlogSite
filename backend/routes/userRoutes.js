@@ -24,5 +24,5 @@ router.post("/login", UserController.userLogin);
 router.post("/changePassword", UserController.changePassword);
 router.get("/dashboard", Dashboard.getUserInfo);
 router.post("/addBlog", Blogs.addBlog);
-router.post("/fetchblogs", Blogs.fetchBlogs);
+router.get("/fetchblogs", Blogs.fetchBlogs);
 module.exports = router;
