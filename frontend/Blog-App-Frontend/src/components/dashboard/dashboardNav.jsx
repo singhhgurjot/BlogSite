@@ -9,7 +9,7 @@ export default function dashboardNav() {
               <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
 
-                  <span className="font-calli font-bold text-2xl ">
+                  <span className="font-calli font-bold text-4xl ">
                       ScribbleSphere
                   </span>
 
@@ -43,7 +43,7 @@ export default function dashboardNav() {
                           <li>
                               <a
                                   href="#"
-                                  className="font-calli font-bold text-1xl ml-px"
+                                  className="font-calli font-bold text-2xl ml-px"
                                   onClick={() => {
                                       localStorage.removeItem("token");
                                       toast("Logout Successfull");
@@ -59,9 +59,9 @@ export default function dashboardNav() {
                           <li>
                               <a
                                   href="#"
-                                  className="font-calli font-bold text-1xl"
+                                  className="font-calli font-bold text-2xl"
                                   onClick={() => {
-                                      navigate("/register");
+                                      navigate("/");
                                   }}
                               >
                                   HOME

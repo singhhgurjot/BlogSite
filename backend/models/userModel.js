@@ -19,6 +19,14 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  blogsPosted: {
+    type: Number,
+    default: 0,
+  },
+  totalLikes: {
+    type: Number,
+    default: 0,
+  },
 });
 const userModel = mongoose.model("users", userSchema);
 
