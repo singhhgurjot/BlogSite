@@ -1,0 +1,10 @@
+.outerContainer{
+    background-image: url("./background.svg");
+}
+.content-container{
+    background-color:#f9f5ed ;
+    box-shadow:10px 10px;   
+
+    width: 900px;
+    height:1000px
+}

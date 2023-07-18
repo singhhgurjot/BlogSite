@@ -7,7 +7,9 @@ import theGuy from "./sampleImage.jpg";
 import BlogMiniView from '../blogMiniView/blogMiniView';
 import {useState} from "react";
 import "./dashboard.css"
+import { useNavigate } from 'react-router-dom';
 export default function dashboard() {
+  const navigate=useNavigate();
 const [name,setName]=useState("");
     const [username, setUsername] = useState("");
     const [likes, setTotalLikes] = useState("");
@@ -45,12 +47,16 @@ useEffect(()=>{
      <p> Blogs Posted : {blogsPosted}</p>
               </div>
               <div className="ml-400 mt-20 flex flex-col add-here">
-        <h1 className="font-calli text-bold text-2xl ml-20 mt--5"> MY BLOGS</h1>
+        <h1 className="font-calli text-bold text-2xl ml-20 mt--5">MY BLOGS</h1>
           {blogs.map((individual) => (
             <BlogMiniView
               key={individual.id}
               title={individual.title}
               content={individual.content}
+              openIndividualPage={()=>{
+                const url="/blog/"+individual._id;
+                navigate(url);
+              }}
               
             />
           ))}

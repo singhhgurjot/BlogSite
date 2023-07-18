@@ -1,0 +1,15 @@
+.outerDiv{
+    background-image: url("./background.svg");
+
+background-repeat: repeat-y;
+
+}
+.title{
+    width:800px;
+
+}
+.contentss{
+    height:1000px;
+    width:800px
+    
+}

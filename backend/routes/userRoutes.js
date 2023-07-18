@@ -11,6 +11,7 @@ router.use("/changePassword", checkAuthUser);
 router.use("/dashboard", checkAuthUser);
 router.use("/addBlog", checkAuthUser);
 router.use("/fetchBlogs", checkAuthUser);
+router.use("/blog/:id", checkAuthUser);
 //Public Routes
 router.post(
   "/register",
@@ -25,4 +26,5 @@ router.post("/changePassword", UserController.changePassword);
 router.get("/dashboard", Dashboard.getUserInfo);
 router.post("/addBlog", Blogs.addBlog);
 router.get("/fetchblogs", Blogs.fetchBlogs);
+router.get("/blog/:id", Blogs.viewBlog);
 module.exports = router;

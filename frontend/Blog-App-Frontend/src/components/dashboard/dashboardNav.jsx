@@ -67,6 +67,17 @@ export default function dashboardNav() {
                                   HOME
                               </a>
                           </li>
+                          <li>
+                              <a
+                                  href="#"
+                                  className="font-calli font-bold text-2xl"
+                                  onClick={() => {
+                                      navigate("/write");
+                                  }}
+                              >
+                                  START WRITING!
+                              </a>
+                          </li>
                       </ul>
                   </div>
               </div>
