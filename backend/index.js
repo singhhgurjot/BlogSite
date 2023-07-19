@@ -14,12 +14,13 @@ const PORT = 8080;
 app.listen(PORT, () => {
   console.log(`Listening to PORT: ${PORT}`);
 });
+const mongopass = process.env.MONGOPASS;
+const mongourl =
+  "mongodb+srv://GurjotSingh:" +
+  mongopass +
+  "@cluster0.bqsptqv.mongodb.net/blog-app";
 //MONGOOSE CONNECTION
-mongoose
-  .connect(
-    "mongodb+srv://GurjotSingh:harry499@cluster0.bqsptqv.mongodb.net/blog-app"
-  )
-  .then((db) => {
-    console.log("Connected to Mongo Successfully");
-  });
+mongoose.connect(mongourl).then((db) => {
+  console.log("Connected to Mongo Successfully");
+});
 //REGISTER API
