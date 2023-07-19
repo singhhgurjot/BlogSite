@@ -1,2 +1,3 @@
 /backend/node_modules/
 /frontend/Blog-App-Frontend/node_modules/
+/backend/.env
