@@ -6,12 +6,14 @@ const { validationResult } = require("express-validator");
 const checkAuthUser = require("../middlewares/checkAuthUser.js");
 const Dashboard = require("../controllers/dashboardController.js");
 const Blogs = require("../controllers/blogController.js");
+const Home = require("../controllers/homePageController.js");
 //MIDDLEWARES
 router.use("/changePassword", checkAuthUser);
 router.use("/dashboard", checkAuthUser);
 router.use("/addBlog", checkAuthUser);
 router.use("/fetchBlogs", checkAuthUser);
 router.use("/blog/:id", checkAuthUser);
+router.use("/home", checkAuthUser);
 //Public Routes
 router.post(
   "/register",
@@ -27,4 +29,5 @@ router.get("/dashboard", Dashboard.getUserInfo);
 router.post("/addBlog", Blogs.addBlog);
 router.get("/fetchblogs", Blogs.fetchBlogs);
 router.get("/blog/:id", Blogs.viewBlog);
+router.get("/home", Home.sendName);
 module.exports = router;
